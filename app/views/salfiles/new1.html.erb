@@ -1,0 +1,21 @@
+<% if !@salfile.errors.empty? %>
+   <div class = "alert alert-error">
+
+      <ul>
+         <% @salfile.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+      </ul>
+
+   </div>
+<% end %>
+
+<div class = "well">
+   <%= form_for @salfile, html: { multipart: true } do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %><br><br>
+      <%= f.label :attachment %>:
+      <%= f.file_field :attachment %><br>
+      <%= f.submit "Upload", class: "btn btn-primary" %>
+   <% end %>
+</div>
